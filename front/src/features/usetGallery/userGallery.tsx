@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react';
-import { selectPhotos, selectPhotosLoading } from './gallerySlice';
+import { selectUser } from '../users/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
+import { Link, useParams } from 'react-router-dom';
+import { fetchPhotos } from '../gallery/galleryThunk';
+import { selectUserGallery, selectUserGalleryLoading } from './userGallerySlice';
 import Preloader from '../../components/Preloader/Preloader';
 import { apiUrl } from '../../constants';
-import { Link } from 'react-router-dom';
-import './Gallery.css';
-import { fetchPhotos } from './galleryThunk';
+import { fetchUserPhotos } from './userGalleryThunk';
 
-const Gallery = () => {
+const UserGallery = () => {
+  const user = useAppSelector(selectUser);
+  const id = useParams();
   const dispatch = useAppDispatch();
-  const photos = useAppSelector(selectPhotos);
-  const loading = useAppSelector(selectPhotosLoading);
+  const photos = useAppSelector(selectUserGallery);
+  const loading = useAppSelector(selectUserGalleryLoading);
 
   useEffect(() => {
-    dispatch(fetchPhotos());
-  }, [dispatch]);
+    if (id.id) {
+      dispatch(fetchUserPhotos(id.id));
+    }
+  }, [id, dispatch]);
 
   return loading ? (
     <Preloader />
@@ -26,7 +31,6 @@ const Gallery = () => {
             <div key={item._id} className="photo-item">
               <img src={item.image ? apiUrl + '/' + item.image : ''} alt={item.title} />
               <h3>{item.title}</h3>
-              <Link to={'userPhotos/' + item.user._id.toString()}>By {item.user.displayName}</Link>
             </div>
           ))
         ) : (
@@ -37,4 +41,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default UserGallery;

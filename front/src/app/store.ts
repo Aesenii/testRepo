@@ -12,6 +12,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { photoReducer } from '../features/gallery/gallerySlice';
+import { userPhotoReducer } from '../features/usetGallery/userGallerySlice';
 
 const usersPersistConfig = {
   key: 'lastcontrol:users',
@@ -20,6 +21,7 @@ const usersPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  userPhotos: userPhotoReducer,
   photos: photoReducer,
   users: persistReducer(usersPersistConfig, usersReducer),
 });
