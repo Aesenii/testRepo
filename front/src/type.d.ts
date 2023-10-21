@@ -51,3 +51,8 @@ export interface IPhoto {
     displayName: string;
   };
 }
+
+export interface PhotoMutation {
+  title: string;
+  image: File | null;
+}

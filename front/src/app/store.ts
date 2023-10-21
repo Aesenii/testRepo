@@ -12,7 +12,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { photoReducer } from '../features/gallery/gallerySlice';
-import { userPhotoReducer } from '../features/usetGallery/userGallerySlice';
+import { userPhotoReducer } from '../features/userGallery/userGallerySlice';
 
 const usersPersistConfig = {
   key: 'lasttcontroll:users',

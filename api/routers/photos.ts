@@ -1,6 +1,8 @@
 import express from 'express';
 import Photo from '../models/Photo';
-import auth from '../midleware/auth';
+import auth, { RequestWithUser } from '../midleware/auth';
+import { imagesUpload } from '../multer';
+import { Error } from 'mongoose';
 
 const photosRouter = express.Router();
 
@@ -34,6 +36,28 @@ photosRouter.delete('/:id', auth, async (req, res) => {
     return res.send('Deleted');
   } catch (e) {
     return res.status(500).send('error');
+  }
+});
+
+photosRouter.post('/', auth, imagesUpload.single('image'), async (req, res, next) => {
+  try {
+    const user = (req as RequestWithUser).user;
+
+    console.log(req.body);
+
+    const photo = new Photo({
+      user: user.id,
+      title: req.body.title,
+      image: req.file ? 'images/' + req.file.filename : null,
+    });
+
+    await photo.save();
+    return res.send(photo);
+  } catch (e) {
+    if (e instanceof Error.ValidationError) {
+      return res.status(400).send(e);
+    }
+    return next(e);
   }
 });
 

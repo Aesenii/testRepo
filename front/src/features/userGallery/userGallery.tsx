@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { selectUser } from '../users/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { selectUserGallery, selectUserGalleryLoading } from './userGallerySlice';
 import Preloader from '../../components/Preloader/Preloader';
 import { apiUrl } from '../../constants';
@@ -30,7 +30,14 @@ const UserGallery = () => {
     <Preloader />
   ) : (
     <div className="user-gallery">
-      <h2>{photos.length > 0 ? photos[0].user.displayName + '`s ' + 'gallery' : ''}</h2>
+      <div className="user-gallery-toolbar">
+        {/*<h2>{photos.length > 0 ? photos[0].user.displayName + '`s ' + 'gallery' : ''}</h2>*/}
+        {/*{user?.displayName === photos[0].user.displayName ? (*/}
+        {/*  <Link to={'/addPhoto'}>Add photo</Link>*/}
+        {/*) : (*/}
+        {/*  ''*/}
+        {/*)}*/}
+      </div>
       <div className="user-gallery-inner">
         {photos.length > 0 ? (
           photos.map((item) => (

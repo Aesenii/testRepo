@@ -3,6 +3,7 @@ import { logout } from '../../features/users/usersThunk';
 import { selectUser, unsetUser } from '../../features/users/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
 import { apiUrl } from '../../constants';
+import { Link } from 'react-router-dom';
 
 const UserMenu = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +17,7 @@ const UserMenu = () => {
     <div className="user-menu">
       <div className="user-info">
         <div>
-          <h3>Hello, {user?.displayName}</h3>
+          <Link to={'userPhotos/' + user?._id}>Hello, {user?.displayName}</Link>
           {user?.googleId ? (
             <img src={user?.image ? user?.image : ''} alt="img" />
           ) : (

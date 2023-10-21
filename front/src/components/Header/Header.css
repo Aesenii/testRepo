@@ -71,9 +71,17 @@
     align-items: center;
 }
 
-.user-info h3 {
+.user-info div a {
     font-size: 32px;
     margin: 0;
+    color: #3fa59e;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.user-info div a:hover {
+    text-decoration: none;
+    color: #eacca8;
 }
 
 .user-info img {
