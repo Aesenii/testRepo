@@ -6,7 +6,7 @@ import Register from './features/users/Register';
 import Login from './features/users/Login';
 import Gallery from './features/gallery/Gallery';
 import UserGallery from './features/userGallery/userGallery';
-import GaleryForm from './features/userGallery/components/GaleryForm';
+import GaleryForm from './features/gallery/components/GaleryForm';
 
 const App = () => {
   return (

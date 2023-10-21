@@ -3,8 +3,8 @@ import './GalleryForm.css';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../app/hook';
 import { selectUser } from '../../users/usersSlice';
-import { createPhoto } from '../userGalleryThunk';
-import { selectErrorPhotos } from '../userGallerySlice';
+import { createPhoto } from '../galleryThunk';
+import { selectErrorPhotos } from '../gallerySlice';
 
 const GaleryForm = () => {
   const user = useAppSelector(selectUser);

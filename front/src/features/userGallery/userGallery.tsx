@@ -5,7 +5,8 @@ import { Link, useParams } from 'react-router-dom';
 import { selectUserGallery, selectUserGalleryLoading } from './userGallerySlice';
 import Preloader from '../../components/Preloader/Preloader';
 import { apiUrl } from '../../constants';
-import { deletePhoto, fetchUserPhotos } from './userGalleryThunk';
+import { fetchUserPhotos } from './userGalleryThunk';
+import { deletePhoto } from '../gallery/galleryThunk';
 import './UserGallery.css';
 import Modal from '../../components/Modal/Modal';
 
