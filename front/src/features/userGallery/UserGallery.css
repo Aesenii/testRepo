@@ -21,6 +21,7 @@
     padding: 5px 15px;
     font-size: 26px;
     font-weight: 700;
+    white-space: nowrap;
 }
 
 .user-gallery-toolbar a:hover {
@@ -73,4 +74,27 @@
     color: #3fa59e;
     box-shadow: #3fa59e;
     background-color: #434343;
+}
+
+.go-to-create {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.empty-title {
+    color: #434343;
+    text-align: center;
+    font-size: 42px;
+    width: 100%;
+}
+
+.go-to-create a {
+    color: #3fa59e;
+    font-size: 32px;
+}
+
+.go-to-create a:hover {
+    color: #1f5d57;
 }
