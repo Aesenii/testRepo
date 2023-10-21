@@ -36,7 +36,7 @@ const run = async () => {
       displayName: 'Arsa',
       password: '222',
       token: crypto.randomUUID(),
-      image: 'fixtures/user2.png',
+      image: 'fixtures/user2.jpeg',
       role: 'user',
     },
   );

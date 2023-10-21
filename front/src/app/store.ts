@@ -15,7 +15,7 @@ import { photoReducer } from '../features/gallery/gallerySlice';
 import { userPhotoReducer } from '../features/usetGallery/userGallerySlice';
 
 const usersPersistConfig = {
-  key: 'lastcontrol:users',
+  key: 'lasttcontroll:users',
   storage,
   whitelist: ['user'],
 };

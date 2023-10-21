@@ -10,3 +10,7 @@ export const fetchUserPhotos = createAsyncThunk<IPhoto[], string>(
     return responseComments.data;
   },
 );
+
+export const deletePhoto = createAsyncThunk<void, string>('photos/deletePhoto', async (id) => {
+  await axiosApi.delete(`/photos/${id}`);
+});

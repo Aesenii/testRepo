@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { selectUser } from '../users/usersSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import { Link, useParams } from 'react-router-dom';
-import { fetchPhotos } from '../gallery/galleryThunk';
+import { useParams } from 'react-router-dom';
 import { selectUserGallery, selectUserGalleryLoading } from './userGallerySlice';
 import Preloader from '../../components/Preloader/Preloader';
 import { apiUrl } from '../../constants';
-import { fetchUserPhotos } from './userGalleryThunk';
+import { deletePhoto, fetchUserPhotos } from './userGalleryThunk';
+import './UserGallery.css';
 
 const UserGallery = () => {
   const user = useAppSelector(selectUser);
@@ -21,16 +21,27 @@ const UserGallery = () => {
     }
   }, [id, dispatch]);
 
+  const photoDelete = async (index: string) => {
+    await dispatch(deletePhoto(index));
+    await dispatch(fetchUserPhotos(id.id ? id.id : ''));
+  };
+
   return loading ? (
     <Preloader />
   ) : (
-    <div className="gallery">
-      <div className="gallery-inner">
+    <div className="user-gallery">
+      <h2>{photos.length > 0 ? photos[0].user.displayName + '`s ' + 'gallery' : ''}</h2>
+      <div className="user-gallery-inner">
         {photos.length > 0 ? (
           photos.map((item) => (
-            <div key={item._id} className="photo-item">
+            <div key={item._id} className="user-photo-item">
               <img src={item.image ? apiUrl + '/' + item.image : ''} alt={item.title} />
               <h3>{item.title}</h3>
+              {user?._id === id.id || user?.role === 'admin' ? (
+                <button onClick={() => photoDelete(item._id)}>Delete</button>
+              ) : (
+                ''
+              )}
             </div>
           ))
         ) : (
@@ -40,5 +51,4 @@ const UserGallery = () => {
     </div>
   );
 };
-
 export default UserGallery;

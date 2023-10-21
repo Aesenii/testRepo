@@ -7,7 +7,7 @@ dotenv.config();
 const config = {
   rootPath,
   publicPath: path.join(rootPath, 'public'),
-  db: 'mongodb://localhost/lastcontrol',
+  db: 'mongodb://localhost/lasttcontroll',
   google: {
     clientId: process.env.GOOGLE_CLIENT_ID,
   },
