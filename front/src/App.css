@@ -1,0 +1,12 @@
+body {
+    min-width: 320px;
+    margin: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background-color: #eacca8;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
