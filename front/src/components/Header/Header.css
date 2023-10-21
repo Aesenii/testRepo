@@ -3,6 +3,7 @@
     background-color: #434343;
     position: relative;
     z-index: 2;
+    margin-bottom: 10px;
 }
 
 .header-inner {

@@ -11,14 +11,16 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { photoReducer } from '../features/gallery/gallerySlice';
 
 const usersPersistConfig = {
-  key: 'controllast:users',
+  key: 'lastcontrol:users',
   storage,
   whitelist: ['user'],
 };
 
 const rootReducer = combineReducers({
+  photos: photoReducer,
   users: persistReducer(usersPersistConfig, usersReducer),
 });
 

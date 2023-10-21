@@ -41,3 +41,13 @@ export interface LoginMutation {
 export interface GlobalError {
   error: string;
 }
+
+export interface IPhoto {
+  _id: string;
+  title: string;
+  image: string | null;
+  user: {
+    _id: string;
+    displayName: string;
+  };
+}
