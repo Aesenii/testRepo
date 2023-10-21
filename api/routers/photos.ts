@@ -43,8 +43,6 @@ photosRouter.post('/', auth, imagesUpload.single('image'), async (req, res, next
   try {
     const user = (req as RequestWithUser).user;
 
-    console.log(req.body);
-
     const photo = new Photo({
       user: user.id,
       title: req.body.title,
